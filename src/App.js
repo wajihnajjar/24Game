@@ -9,6 +9,7 @@ const createRandomNumber =()=>{
 
 function App() {
   const ref= useRef(null)
+  const numberRef = useRef(null)
   const [randomN , setRand] = useState([createRandomNumber(),createRandomNumber(),createRandomNumber(),createRandomNumber(),'+','-','*','/'])
   const [test,useTest] = useState([1])
   useEffect(()=>{
@@ -16,16 +17,19 @@ function App() {
   },[])
 
 
-  const onDrag = (e,data  )=>{
+  const onDrag = (e,data)=>{
   
   
   }
   
   const deleteElementFromP = (e)=>{
+    numberRef.current.children[e.target.pos].style.display="block"
+    console.log(e.target)
+    console.log(numberRef.current.children)
     e.target.textContent=""
   }
   const onStop=(e,data)=>{
-    console.log(e," ",data.node.style)
+    console.log(e," ",data.node.childElementCount)
     let Max = 1000
     let Index =-1 
 if(ref.current.children[0].offsetTop-e.y<=15){
@@ -40,6 +44,7 @@ if(ref.current.children[0].offsetTop-e.y<=15){
 
     }
     data.node.style.display="none"
+    ref.current.children[Index].pos=data.node.childElementCount
     ref.current.children[Index].textContent=data.node.textContent
     console.log( ref.current.children)
 }
@@ -65,18 +70,20 @@ if(ref.current.children[0].offsetTop-e.y<=15){
 
 
   
-      <div style={{
+      <div
+       style={{
           display:"flex",
 
-        }}>
-      {randomN.map(number=>{
+        }}
+        ref={numberRef}   
+        >
+      {randomN.map((number,index)=>{
     return(
       <Draggable
-               
       onDrag={onDrag}
       onStop={onStop}
       > 
-            <p style={{marginLeft:"2rem"}}>{number}</p>
+            <p key={index} style={{marginLeft:"2rem"}}>{number}</p>
       </Draggable>
 
        )    
@@ -85,8 +92,8 @@ if(ref.current.children[0].offsetTop-e.y<=15){
       <div ref ={ref}style={{
         display:"flex"
       }}>
-       {randomN.map(number=>{
-        return <p 
+       {randomN.map((number,index)=>{
+        return <p key={index}
         onClick={deleteElementFromP}
         style={{
           marginLeft:"2rem" , 
