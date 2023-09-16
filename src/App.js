@@ -20,9 +20,6 @@ function App() {
     }
   },[])
   const onDrag = (e,data  )=>{
-
-    //console.log('Data: ', data);
-    
   
   
   }
@@ -30,6 +27,7 @@ function App() {
   const onStop=(e)=>{
     let Max = 1000
     let Index =-1 
+if(ref.current.children[0].offsetTop-e.y<=15){
     for (let i = 0 ; i< ref.current.children.length ; i ++){
       let x = ref.current.children[i].offsetTop
       let y =ref.current.children[i].offsetLeft
@@ -42,7 +40,7 @@ function App() {
     }
     ref.current.children[Index].textContent=test[0]
     console.log( ref.current.children)
-
+}
 
   }
   return (
