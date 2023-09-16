@@ -12,18 +12,18 @@ function App() {
   const [randomN , setRand] = useState([createRandomNumber(),createRandomNumber(),createRandomNumber(),createRandomNumber(),'+','-','*','/'])
   const [test,useTest] = useState([1])
   useEffect(()=>{
-    console.log(ref.current.children)
-    for (let i = 0 ; i< ref.current.children.length ; i ++){
-      let x = ref.current.children[i].offsetHeight
-      let y =ref.current.children[i].offsetWidth
-      console.log(x," ",y,' ',ref.current.children[i].offsetTop , " ", ref.current.children[i].offsetLeft )
-    }
+
   },[])
+
+
   const onDrag = (e,data  )=>{
   
   
   }
   
+  const deleteElementFromP = (e)=>{
+    e.target.textContent=""
+  }
   const onStop=(e,data)=>{
     console.log(e," ",data.node.style)
     let Max = 1000
@@ -86,8 +86,9 @@ if(ref.current.children[0].offsetTop-e.y<=15){
         display:"flex"
       }}>
        {randomN.map(number=>{
-        return <p style={{
-          
+        return <p 
+        onClick={deleteElementFromP}
+        style={{
           marginLeft:"2rem" , 
           height:"3em" , 
           width:"3em",
