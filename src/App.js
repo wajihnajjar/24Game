@@ -24,7 +24,8 @@ function App() {
   
   }
   
-  const onStop=(e)=>{
+  const onStop=(e,data)=>{
+    console.log(e," ",data.node.textContent)
     let Max = 1000
     let Index =-1 
 if(ref.current.children[0].offsetTop-e.y<=15){
@@ -38,7 +39,7 @@ if(ref.current.children[0].offsetTop-e.y<=15){
       }
 
     }
-    ref.current.children[Index].textContent=test[0]
+    ref.current.children[Index].textContent=data.node.textContent
     console.log( ref.current.children)
 }
 
@@ -62,20 +63,24 @@ if(ref.current.children[0].offsetTop-e.y<=15){
 
 
 
-      <Draggable
-               
-                onDrag={onDrag}
-                onStop={onStop}
-      > 
+  
       <div style={{
           display:"flex",
 
         }}>
-      {test.map(number=>{
-        return <p style={{marginLeft:"2rem"}}>{number}</p>
-      })}
-      </div>
+      {randomN.map(number=>{
+    return(
+      <Draggable
+               
+      onDrag={onDrag}
+      onStop={onStop}
+      > 
+            <p style={{marginLeft:"2rem"}}>{number}</p>
       </Draggable>
+
+       )    
+     })}
+      </div>
       <div ref ={ref}style={{
         display:"flex"
       }}>
