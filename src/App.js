@@ -1,23 +1,44 @@
 import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
 
+const createRandomNumber =()=>{
+  return Math.floor(Math.random()*10)
+}
 function App() {
+  const [randomN , setRand] = useState([createRandomNumber(),createRandomNumber(),createRandomNumber(),createRandomNumber()])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{
+      height:"100vh", 
+      display:'flex',
+      width:"100vw"
+      
+    }}>
+      <div style={{
+        display:"flex",
+        height:"100vh", 
+        width:"100vw",
+        marginTop:"15rem" , 
+        alignItems:"center" , 
+        flexDirection:"column"
+     }}>
+      <div style={{
+          display:"flex",
+
+        }}>
+      {randomN.map(number=>{
+        return <p style={{marginLeft:"2rem"}}>{number}</p>
+      })}
+      </div>
+      <div style={{
+        display:"flex"
+      }}>
+       {randomN.map(number=>{
+        return <p style={{marginLeft:"2rem"}}>a</p>
+      })}
+      </div>
+      </div>
+      
     </div>
   );
 }
