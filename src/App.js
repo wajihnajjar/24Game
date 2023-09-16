@@ -21,19 +21,30 @@ function App() {
   },[])
   const onDrag = (e,data  )=>{
 
-    console.log('Event: ',e.x, " ",e.y);
     //console.log('Data: ', data);
-    for (let i = 0 ; i< ref.current.children.length ; i ++){
-      let x = ref.current.children[i].offsetTop
-      let y =ref.current.children[i].offsetLeft
-      console.log(Math.sqrt(((x-e.x)*(x-e.x)) + ((y-e.y)*(y-e.y))))
-    }
-
     
   
   
   }
   
+  const onStop=(e)=>{
+    let Max = 1000
+    let Index =-1 
+    for (let i = 0 ; i< ref.current.children.length ; i ++){
+      let x = ref.current.children[i].offsetTop
+      let y =ref.current.children[i].offsetLeft
+      let curr = (Math.sqrt(((x-e.y)*(x-e.y)) + ((y-e.x)*(y-e.x))))
+      if(Math.floor(curr)<Max){
+        Max=Math.floor(curr)
+        Index = i  ; 
+      }
+
+    }
+    ref.current.children[Index].textContent=test[0]
+    console.log( ref.current.children)
+
+
+  }
   return (
     <div style={{
       height:"100vh", 
@@ -56,8 +67,8 @@ function App() {
       <Draggable
                
                 onDrag={onDrag}
-        
-      >
+                onStop={onStop}
+      > 
       <div style={{
           display:"flex",
 
@@ -71,12 +82,16 @@ function App() {
         display:"flex"
       }}>
        {randomN.map(number=>{
-        return <input style={{
+        return <p style={{
+          
           marginLeft:"2rem" , 
           height:"3em" , 
-          width:"3em"
-        
-        }} />
+          width:"3em",
+          border:"1px solid black",
+          display:"flex" , 
+          justifyContent:"center" , 
+          alignItems:"center"
+        }}>a</p>
       })}
       </div>
       </div>
