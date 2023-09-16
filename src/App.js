@@ -25,7 +25,7 @@ function App() {
   }
   
   const onStop=(e,data)=>{
-    console.log(e," ",data.node.textContent)
+    console.log(e," ",data.node.style)
     let Max = 1000
     let Index =-1 
 if(ref.current.children[0].offsetTop-e.y<=15){
@@ -39,6 +39,7 @@ if(ref.current.children[0].offsetTop-e.y<=15){
       }
 
     }
+    data.node.style.display="none"
     ref.current.children[Index].textContent=data.node.textContent
     console.log( ref.current.children)
 }
@@ -94,7 +95,7 @@ if(ref.current.children[0].offsetTop-e.y<=15){
           display:"flex" , 
           justifyContent:"center" , 
           alignItems:"center"
-        }}>a</p>
+        }}></p>
       })}
       </div>
       </div>
