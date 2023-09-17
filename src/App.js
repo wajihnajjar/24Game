@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+import React from 'react'
 import './App.css';
 import { useEffect, useRef, useState } from 'react';
 import Draggable from 'react-draggable';
@@ -11,10 +11,11 @@ function App() {
   const ref= useRef(null)
   const numberRef = useRef(null)
   const [randomN , setRand] = useState([createRandomNumber(),createRandomNumber(),createRandomNumber(),createRandomNumber(),'+','-','*','/'])
-  const [test,useTest] = useState([1])
+  const [test,setTest] = useState([1])
   useEffect(()=>{
 
-  },[])
+    console.log(test, " ** ", randomN)
+  },[test,randomN])
 
 
   const onDrag = (e,data)=>{
@@ -23,10 +24,13 @@ function App() {
   }
   
   const deleteElementFromP = (e)=>{
-    numberRef.current.children[e.target.pos].style.display="block"
-    console.log(e.target)
+   // numberRef.current.children[e.target.pos].style.display="block"
+   let numberToAdd = numberRef.current.children[e.target.pos] 
+   let Element= React.createElement("p", { style:{marginLeft:"2rem"} },randomN[numberToAdd]);
+   console.log(e.target)
     console.log(numberRef.current.children)
     e.target.textContent=""
+  
   }
   const onStop=(e,data)=>{
     console.log(e," ",data.node.childElementCount)
@@ -43,7 +47,10 @@ if(ref.current.children[0].offsetTop-e.y<=15){
       }
 
     }
-    data.node.style.display="none"
+    //data.node.style.display="none"
+    data.node.remove()
+   let Arr = [...randomN ]
+   Arr= Arr.slice(0,Index).concat(Arr.slice(Index+1,Arr.length))
     ref.current.children[Index].pos=data.node.childElementCount
     ref.current.children[Index].textContent=data.node.textContent
     console.log( ref.current.children)
