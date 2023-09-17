@@ -62,7 +62,6 @@ if(ref.current.children[0].offsetTop-e.y<=15){
       }
 
     }
-    //data.node.style.display="none"
     data.node.remove()
     ref.current.children[Index].elem=data.node.textContent
     ref.current.children[Index].textContent=data.node.textContent
