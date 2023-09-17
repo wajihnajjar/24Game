@@ -11,7 +11,7 @@ function App() {
   const ref= useRef(null)
   const numberRef = useRef(null)
   const [randomN , setRand] = useState([createRandomNumber(),createRandomNumber(),createRandomNumber(),createRandomNumber(),'+','-','*','/'])
-  const [test,setTest] = useState([1])
+  const [test,setTest] = useState(["*","*","*","*","*","*","*","*"])
   useEffect(()=>{
 
     console.log(test, " ** ", randomN)
@@ -25,10 +25,13 @@ function App() {
   
   const deleteElementFromP = (e)=>{
    // numberRef.current.children[e.target.pos].style.display="block"
-   let numberToAdd = numberRef.current.children[e.target.pos] 
-   let Element= React.createElement("p", { style:{marginLeft:"2rem"} },randomN[numberToAdd]);
+   console.log(e.target.elem)
+   let arr = [...randomN]
+   arr.push(e.target.elem)
+   setRand(arr)
+   //let Element= React.createElement("p", { style:{marginLeft:"2rem"} },e.target.elem);
    console.log(e.target)
-    console.log(numberRef.current.children)
+    console.log(numberRef.current.children.addChild)
     e.target.textContent=""
   
   }
@@ -51,7 +54,7 @@ if(ref.current.children[0].offsetTop-e.y<=15){
     data.node.remove()
    let Arr = [...randomN ]
    Arr= Arr.slice(0,Index).concat(Arr.slice(Index+1,Arr.length))
-    ref.current.children[Index].pos=data.node.childElementCount
+    ref.current.children[Index].elem=data.node.textContent
     ref.current.children[Index].textContent=data.node.textContent
     console.log( ref.current.children)
 }
@@ -99,7 +102,7 @@ if(ref.current.children[0].offsetTop-e.y<=15){
       <div ref ={ref}style={{
         display:"flex"
       }}>
-       {randomN.map((number,index)=>{
+       {test.map((number,index)=>{
         return <p key={index}
         onClick={deleteElementFromP}
         style={{
