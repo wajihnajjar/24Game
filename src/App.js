@@ -29,8 +29,12 @@ function App() {
     for (let i = 0 ; i< Arr.length ; i ++){
       stack.push(Arr[i].textContent)
     }
-    console.log(stack)
-
+    let operator = ["+" ,"-","/","*"]
+    for( let i = 1 ; i< stack.length; i ++)
+    {
+      if(operator.indexOf(stack[i])!=-1 &&operator.indexOf(stack[i-1])!=-1 )
+          return false 
+    }
 
   }
 
