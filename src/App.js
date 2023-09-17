@@ -18,11 +18,7 @@ function App() {
   },[test,randomN])
 
 
-  const onDrag = (e,data)=>{
-  
-  
-  }
-  
+
   const deleteElementFromP = (e)=>{
    // numberRef.current.children[e.target.pos].style.display="block"
    console.log(e.target.elem)
@@ -90,7 +86,6 @@ if(ref.current.children[0].offsetTop-e.y<=15){
       {randomN.map((number,index)=>{
     return(
       <Draggable
-      onDrag={onDrag}
       onStop={onStop}
       > 
             <p key={index} style={{marginLeft:"2rem"}}>{number}</p>
