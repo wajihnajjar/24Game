@@ -40,12 +40,9 @@ function App() {
 
 
   const deleteElementFromP = (e)=>{
-   // numberRef.current.children[e.target.pos].style.display="block"
-   console.log(e.target.elem)
    let arr = [...randomN]
    arr.push(e.target.elem)
    setRand(arr)
-   //let Element= React.createElement("p", { style:{marginLeft:"2rem"} },e.target.elem);
    console.log(e.target)
     console.log(numberRef.current.children.addChild)
     e.target.textContent=""
