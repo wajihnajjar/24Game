@@ -43,7 +43,6 @@ function App() {
    let arr = [...randomN]
    arr.push(e.target.elem)
    setRand(arr)
-   console.log(e.target)
     console.log(numberRef.current.children.addChild)
     e.target.textContent=""
   
