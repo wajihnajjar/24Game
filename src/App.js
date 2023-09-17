@@ -14,9 +14,13 @@ function App() {
   const [test,setTest] = useState(["*","*","*","*","*","*","*","*"])
   useEffect(()=>{
 
-    console.log(test, " ** ", randomN)
   },[test,randomN])
 
+  const GetTheSomme = ()=>{
+    alert(ref.current.children[0].textContent)
+
+
+  }
 
 
   const deleteElementFromP = (e)=>{
@@ -111,6 +115,11 @@ if(ref.current.children[0].offsetTop-e.y<=15){
         }}></p>
       })}
       </div>
+      <p
+        style={{
+          fontSize:"2em"
+        }}
+      >0=24</p>
       </div>
       
     </div>
