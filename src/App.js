@@ -12,12 +12,24 @@ function App() {
   const numberRef = useRef(null)
   const [randomN , setRand] = useState([createRandomNumber(),createRandomNumber(),createRandomNumber(),createRandomNumber(),'+','-','*','/'])
   const [test,setTest] = useState(["*","*","*","*","*","*","*","*"])
+  const [sum , setSum] = useState(-1)
   useEffect(()=>{
 
   },[test,randomN])
 
   const GetTheSomme = ()=>{
-    alert(ref.current.children[0].textContent)
+    // in Case OF All inputs are full make this function work and change The state
+    let Arr = ref.current.children 
+    for (let i = 0 ; i< Arr.length ; i ++){
+      if(Arr[i].textContent==""){
+        return false 
+      }
+    }
+    let stack = []
+    for (let i = 0 ; i< Arr.length ; i ++){
+      stack.push(Arr[i].textContent)
+    }
+    console.log(stack)
 
 
   }
@@ -52,12 +64,10 @@ if(ref.current.children[0].offsetTop-e.y<=15){
     }
     //data.node.style.display="none"
     data.node.remove()
-   let Arr = [...randomN ]
-   Arr= Arr.slice(0,Index).concat(Arr.slice(Index+1,Arr.length))
     ref.current.children[Index].elem=data.node.textContent
     ref.current.children[Index].textContent=data.node.textContent
-    console.log( ref.current.children)
-}
+    GetTheSomme()
+  }
 
   }
   return (
@@ -76,10 +86,6 @@ if(ref.current.children[0].offsetTop-e.y<=15){
         flexDirection:"column"
      }}>
 
-
-
-
-  
       <div
        style={{
           display:"flex",
@@ -119,7 +125,7 @@ if(ref.current.children[0].offsetTop-e.y<=15){
         style={{
           fontSize:"2em"
         }}
-      >0=24</p>
+      >{sum}=24</p>
       </div>
       
     </div>
