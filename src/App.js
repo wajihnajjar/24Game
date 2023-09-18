@@ -17,6 +17,26 @@ function App() {
 
   },[test,randomN])
 
+  const doTheSum = (stack)=>{
+    for(let i = 0 ; i< stack.length; i ++){
+      if(stack[i]=="*" || stack[i]=="/"){
+        let x = parseInt(stack[i-1])
+        let y = parseInt(stack[i+1])
+        let op = stack[i]
+        let sum = 0 ;   
+        if(op=="*")
+          sum = x*y 
+        else
+          sum = Math.floor(x/y)
+        
+          
+      }
+
+    }
+
+
+  }
+
   const GetTheSomme = ()=>{
     // in Case OF All inputs are full make this function work and change The state
     let Arr = ref.current.children 
@@ -35,6 +55,7 @@ function App() {
       if(operator.indexOf(stack[i])!=-1 &&operator.indexOf(stack[i-1])!=-1 )
           return false 
     }
+      doTheSum(stack)
 
   }
 
