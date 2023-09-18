@@ -35,8 +35,24 @@ function App() {
       }
 
     }
-    console.log(stack ," this is the result")
+    for(let i = 0 ; i< stack.length; i ++){
+      if(stack[i]=="+" || stack[i]=="-"){
+        let x = parseInt(stack[i-1])
+        let y = parseInt(stack[i+1])
+        let op = stack[i]
+        let sum = 0 ;   
+        if(op=="+")
+          sum = x+y 
+        else
+          sum = Math.floor(x-y)
+        stack[i+1]=sum
+        stack.splice(i-1,2)
+        i=-2
+      
+      }
 
+    }
+    setSum(stack[0])
 
   }
 
@@ -45,6 +61,7 @@ function App() {
     let Arr = ref.current.children 
     for (let i = 0 ; i< Arr.length ; i ++){
       if(Arr[i].textContent==""){
+        setSum(-1)
         return false 
       }
     }
@@ -55,8 +72,10 @@ function App() {
     let operator = ["+" ,"-","/","*"]
     for( let i = 1 ; i< stack.length; i ++)
     {
-      if(operator.indexOf(stack[i])!=-1 &&operator.indexOf(stack[i-1])!=-1 )
-          return false 
+      if(operator.indexOf(stack[i])!=-1 &&operator.indexOf(stack[i-1])!=-1 ){
+        setSum(-1)
+        return false 
+      }
     }
       doTheSum(stack)
 
@@ -69,7 +88,8 @@ function App() {
    setRand(arr)
     console.log(numberRef.current.children.addChild)
     e.target.textContent=""
-  
+    GetTheSomme()
+
   }
   const onStop=(e,data)=>{
     console.log(e," ",data.node.childElementCount)
