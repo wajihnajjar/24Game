@@ -11,7 +11,7 @@ function App() {
   const ref= useRef(null)
   const numberRef = useRef(null)
   const [randomN , setRand] = useState([createRandomNumber(),createRandomNumber(),createRandomNumber(),createRandomNumber(),'+','-','*','/'])
-  const [test,setTest] = useState(["*","*","*","*","*","*","*","*"])
+  const [test,setTest] = useState(["*","*","*","*","*","*","*"])
   const [sum , setSum] = useState(-1)
   useEffect(()=>{
 
@@ -28,11 +28,14 @@ function App() {
           sum = x*y 
         else
           sum = Math.floor(x/y)
-        
-          
+        stack[i+1]=sum
+        stack.splice(i-1,2)
+        i=-2
+      
       }
 
     }
+    console.log(stack ," this is the result")
 
 
   }
