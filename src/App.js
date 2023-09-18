@@ -2,18 +2,28 @@ import React from 'react'
 import './App.css';
 import { useEffect, useRef, useState } from 'react';
 import Draggable from 'react-draggable';
+import { useAlert } from "react-alert";
 
 const createRandomNumber =()=>{
   return Math.floor(Math.random()*10)
 }
 
 function App() {
+  const alert = useAlert();
+
   const ref= useRef(null)
   const numberRef = useRef(null)
   const [randomN , setRand] = useState([createRandomNumber(),createRandomNumber(),createRandomNumber(),createRandomNumber(),'+','-','*','/'])
   const [test,setTest] = useState(["*","*","*","*","*","*","*"])
   const [sum , setSum] = useState(-1)
   useEffect(()=>{
+    alert.success('Level Finished', {
+      timeout: 4000, // custom timeout just for this one alert
+      onOpen: () => {
+      }, // callback that will be executed after this alert open
+      onClose: () => {
+      } // callback that will be executed after this alert is removed
+    })
 
   },[test,randomN])
 
