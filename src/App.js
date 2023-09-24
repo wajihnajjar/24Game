@@ -13,14 +13,20 @@ function App() {
 
   const ref= useRef(null)
   const numberRef = useRef(null)
-  const [randomN , setRand] = useState([createRandomNumber(),createRandomNumber(),createRandomNumber(),createRandomNumber(),'+','-','*','/'])
+  const [randomN , setRand] = useState([])
   const [test,setTest] = useState(["*","*","*","*","*","*","*"])
   const [sum , setSum] = useState(-1)
   useEffect(()=>{
       axios.get("http://localhost:4001/create/getAllLevels").then(res=>{
-        let data = res.data
+        let data = res.data 
+        let {content} = data[0] 
+        let tempArray  = []
+        for (let i = 0 ; i< content.length ; i+=2){
+          tempArray.push(parseInt(content[i]))
+        }
+        setRand(tempArray.concat(['+','-','*','/']))
       })
-  },[test,randomN])
+  },[test])
 
   const doTheSum = (stack)=>{
     for(let i = 0 ; i< stack.length; i ++){
