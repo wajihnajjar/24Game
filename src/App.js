@@ -3,7 +3,7 @@ import './App.css';
 import { useEffect, useRef, useState } from 'react';
 import Draggable from 'react-draggable';
 import { useAlert } from "react-alert";
-
+import axios from "axios"
 const createRandomNumber =()=>{
   return Math.floor(Math.random()*10)
 }
@@ -17,14 +17,7 @@ function App() {
   const [test,setTest] = useState(["*","*","*","*","*","*","*"])
   const [sum , setSum] = useState(-1)
   useEffect(()=>{
-    alert.success('Level Finished', {
-      timeout: 4000, // custom timeout just for this one alert
-      onOpen: () => {
-      }, // callback that will be executed after this alert open
-      onClose: () => {
-      } // callback that will be executed after this alert is removed
-    })
-
+    
   },[test,randomN])
 
   const doTheSum = (stack)=>{
@@ -63,6 +56,16 @@ function App() {
 
     }
     setSum(stack[0])
+    if(stack[0]==24){
+      alert.success('Level Finished', {
+        timeout: 4000, // custom timeout just for this one alert
+        onClose: () => {
+        // callback that will be executed after this alert is removed
+        // Now Move Forward to The next level 
+        } 
+      })
+  
+    }
 
   }
 
