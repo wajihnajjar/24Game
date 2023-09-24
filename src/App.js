@@ -15,25 +15,37 @@ function App() {
   const ref= useRef(null)
   const numberRef = useRef(null)
   const [randomN , setRand] = useState([])
+  const [allLevels , setLeveles] = useState([])
+  const [currLevel , setCurrLevel] = useState(0)
   const [test,setTest] = useState(["*","*","*","*","*","*","*"])
   const [sum , setSum] = useState(-1)
-  const changeState = (data)=>{
-    let {content} = data[1] 
+  const changeState = ()=>{
+    if(allLevels.length>0){
+    let {content} = allLevels[currLevel] 
     let tempArray  = []
     for (let i = 0 ; i< content.length ; i+=2){
       tempArray.push(parseInt(content[i]))
     }
     setRand(tempArray.concat(['+','-','*','/']))
-
+  }
     
   }
+  useEffect(()=>{
+    console.log(allLevels)
+    changeState()
+
+
+  },[allLevels,currLevel])
+
+
 
   useEffect(()=>{
       axios.get("http://localhost:4001/create/getAllLevels").then(res=>{
         let data = res.data 
-        changeState(data)
+        setLeveles(data)
       })
   },[test])
+
 
   const doTheSum = (stack)=>{
     for(let i = 0 ; i< stack.length; i ++){
