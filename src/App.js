@@ -31,6 +31,7 @@ function App() {
     
   }
   useEffect(()=>{
+    console.log("A")
     changeState()
 
 
@@ -86,6 +87,7 @@ function App() {
       alert.success('Level Finished', {
         timeout: 4000, // custom timeout just for this one alert
         onClose: () => {
+          setCurrLevel((prev)=>prev+1)
         // callback that will be executed after this alert is removed
         // Now Move Forward to The next level 
         } 
