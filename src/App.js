@@ -8,6 +8,7 @@ const createRandomNumber =()=>{
   return Math.floor(Math.random()*10)
 }
 
+
 function App() {
   const alert = useAlert();
 
@@ -16,15 +17,21 @@ function App() {
   const [randomN , setRand] = useState([])
   const [test,setTest] = useState(["*","*","*","*","*","*","*"])
   const [sum , setSum] = useState(-1)
+  const changeState = (data)=>{
+    let {content} = data[1] 
+    let tempArray  = []
+    for (let i = 0 ; i< content.length ; i+=2){
+      tempArray.push(parseInt(content[i]))
+    }
+    setRand(tempArray.concat(['+','-','*','/']))
+
+    
+  }
+
   useEffect(()=>{
       axios.get("http://localhost:4001/create/getAllLevels").then(res=>{
         let data = res.data 
-        let {content} = data[0] 
-        let tempArray  = []
-        for (let i = 0 ; i< content.length ; i+=2){
-          tempArray.push(parseInt(content[i]))
-        }
-        setRand(tempArray.concat(['+','-','*','/']))
+        changeState(data)
       })
   },[test])
 
