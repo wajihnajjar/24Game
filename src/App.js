@@ -17,7 +17,9 @@ function App() {
   const [test,setTest] = useState(["*","*","*","*","*","*","*"])
   const [sum , setSum] = useState(-1)
   useEffect(()=>{
-    
+      axios.get("http://localhost:4001/create/getAllLevels").then(res=>{
+        let data = res.data
+      })
   },[test,randomN])
 
   const doTheSum = (stack)=>{
