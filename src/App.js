@@ -28,12 +28,13 @@ function App() {
     if(allLevels.length>0){
       clearTheInputs()
       let {content} = allLevels[currLevel] 
-      console.log(content)
+      console.log(numberRef)
       let tempArray  = []
       for (let i = 0 ; i< content.length ; i+=2){
         tempArray.push(parseInt(content[i]))
       }
-      setRand(tempArray.concat(['+','-','*','/']))
+      tempArray=tempArray.concat(['+','-','*'])
+      setRand([...tempArray])
   }
     
   }
@@ -158,9 +159,10 @@ if(ref.current.children[0].offsetTop-e.y<=15){
       }
 
     }
-    data.node.remove()
     ref.current.children[Index].elem=data.node.textContent
     ref.current.children[Index].textContent=data.node.textContent
+    console.log(data)
+    data.node.remove()
     GetTheSomme()
   }
 
@@ -193,6 +195,7 @@ if(ref.current.children[0].offsetTop-e.y<=15){
       <Draggable
       onStop={onStop}
       key={index}
+      data-key={index}
       > 
             <p key={index} style={{marginLeft:"2rem"}}>{number}</p>
       </Draggable>
