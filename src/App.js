@@ -19,19 +19,25 @@ function App() {
   const [currLevel , setCurrLevel] = useState(0)
   const [test,setTest] = useState(["*","*","*","*","*","*","*"])
   const [sum , setSum] = useState(-1)
+  const clearTheInputs = ()=>{
+    for (let i = 0 ; i< ref.current.children.length ; i ++){
+      ref.current.children[i].textContent = ""
+    }
+  }
   const changeState = ()=>{
     if(allLevels.length>0){
-    let {content} = allLevels[currLevel] 
-    let tempArray  = []
-    for (let i = 0 ; i< content.length ; i+=2){
-      tempArray.push(parseInt(content[i]))
-    }
-    setRand(tempArray.concat(['+','-','*','/']))
+      clearTheInputs()
+      let {content} = allLevels[currLevel] 
+      console.log(content)
+      let tempArray  = []
+      for (let i = 0 ; i< content.length ; i+=2){
+        tempArray.push(parseInt(content[i]))
+      }
+      setRand(tempArray.concat(['+','-','*','/']))
   }
     
   }
   useEffect(()=>{
-    console.log("A")
     changeState()
 
 
