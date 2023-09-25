@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import Draggable from 'react-draggable';
 import { useAlert } from "react-alert";
 import axios from "axios"
+import ReactDOM from 'react-dom';
 const createRandomNumber =()=>{
   return Math.floor(Math.random()*1000)
 }
@@ -25,6 +26,7 @@ function App() {
     }
   }
   const changeState = ()=>{
+      console.log(numberRef)
     if(allLevels.length>0){
       clearTheInputs()
       let {content} = allLevels[currLevel] 
@@ -35,7 +37,13 @@ function App() {
       }
       tempArray=tempArray.concat(['+','-','*'])
       setRand([...tempArray])
-  }
+      if(currLevel>=1){
+        const childElement = document.createElement('Draggable');
+        childElement.textContent = 'This is a child element.';    
+        console.log(childElement)
+          numberRef.current.appendChild(childElement);   
+           }
+    }
     
   }
 
@@ -162,11 +170,8 @@ if(ref.current.children[0].offsetTop-e.y<=15){
     ref.current.children[Index].elem=data.node.textContent
     ref.current.children[Index].textContent=data.node.textContent
     let ind =parseInt(data.node.dataset["key"]) 
-    let t  =[...randomN]
-    t.splice(ind,1)
-    console.log(ind , " ",t)
-    setRand(t) 
-//    data.node.remove()
+
+    data.node.remove()
 
     GetTheSomme()
   }
