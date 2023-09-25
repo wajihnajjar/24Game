@@ -161,8 +161,13 @@ if(ref.current.children[0].offsetTop-e.y<=15){
     }
     ref.current.children[Index].elem=data.node.textContent
     ref.current.children[Index].textContent=data.node.textContent
-    console.log(data)
-    data.node.remove()
+    let ind =parseInt(data.node.dataset["key"]) 
+    let t  =[...randomN]
+    t.splice(ind,1)
+    console.log(ind , " ",t)
+    setRand(t) 
+//    data.node.remove()
+
     GetTheSomme()
   }
 
@@ -194,10 +199,9 @@ if(ref.current.children[0].offsetTop-e.y<=15){
     return(
       <Draggable
       onStop={onStop}
-      key={index}
-      data-key={index}
+      
       > 
-            <p key={index} style={{marginLeft:"2rem"}}>{number}</p>
+            <p key={index} data-key={index} style={{marginLeft:"2rem"}}>{number}</p>
       </Draggable>
 
        )    
