@@ -26,7 +26,6 @@ function App() {
     }
   }
   const changeState = ()=>{
-      console.log(numberRef)
     if(allLevels.length>0){
       clearTheInputs()
       let {content} = allLevels[currLevel] 
