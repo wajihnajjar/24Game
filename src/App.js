@@ -165,13 +165,7 @@ if(ref.current.children[0].offsetTop-e.y<=15){
     ref.current.children[Index].elem=data.node.textContent
     ref.current.children[Index].textContent=data.node.textContent
     data.node.remove()
-    setTimeout(()=>{
-      let ind =parseInt("0") 
-      let r = [...randomN]
-      r.splice(ind,1)
-      setRand(r)
   
-    } , 3000)
     GetTheSomme()
   }
 
