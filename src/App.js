@@ -103,8 +103,6 @@ console.log(randomN)
         onClose: () => {
           setCurrLevel((prev)=>prev+1)
           setSum(0)
-        // callback that will be executed after this alert is removed
-        // Now Move Forward to The next level 
         } 
       })
   
