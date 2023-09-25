@@ -102,6 +102,7 @@ console.log(randomN)
         timeout: 4000, // custom timeout just for this one alert
         onClose: () => {
           setCurrLevel((prev)=>prev+1)
+          setSum(0)
         // callback that will be executed after this alert is removed
         // Now Move Forward to The next level 
         } 
