@@ -37,12 +37,7 @@ function App() {
       }
       tempArray=tempArray.concat(['+','-','*'])
       setRand([...tempArray])
-      if(currLevel>=1){
-        const childElement = document.createElement('Draggable');
-        childElement.textContent = 'This is a child element.';    
-        console.log(childElement)
-          numberRef.current.appendChild(childElement);   
-           }
+     
     }
     
   }
@@ -169,10 +164,14 @@ if(ref.current.children[0].offsetTop-e.y<=15){
     }
     ref.current.children[Index].elem=data.node.textContent
     ref.current.children[Index].textContent=data.node.textContent
-    let ind =parseInt(data.node.dataset["key"]) 
-
     data.node.remove()
-
+    setTimeout(()=>{
+      let ind =parseInt("0") 
+      let r = [...randomN]
+      r.splice(ind,1)
+      setRand(r)
+  
+    } , 3000)
     GetTheSomme()
   }
 
