@@ -5,7 +5,7 @@ import Draggable from 'react-draggable';
 import { useAlert } from "react-alert";
 import axios from "axios"
 const createRandomNumber =()=>{
-  return Math.floor(Math.random()*10)
+  return Math.floor(Math.random()*1000)
 }
 
 
@@ -37,6 +37,11 @@ function App() {
   }
     
   }
+
+useEffect(()=>{
+console.log(randomN)
+},[randomN])
+
   useEffect(()=>{
     changeState()
 
@@ -187,6 +192,7 @@ if(ref.current.children[0].offsetTop-e.y<=15){
     return(
       <Draggable
       onStop={onStop}
+      key={index}
       > 
             <p key={index} style={{marginLeft:"2rem"}}>{number}</p>
       </Draggable>
