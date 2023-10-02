@@ -189,7 +189,7 @@ if(ref.current.children[0].offsetTop-e.y<=15){
     t[Index]=data.node.textContent
     setTest(t)
     let x = [...randomN]
-    
+    console.log(e.target.dataset["key"])
     e.target.dataset["key"]= (parseInt( e.target.dataset["key"]) - (7-randomN.length)).toString()
     console.log ("8//////////////////// ",(parseInt( e.target.dataset["key"]) - (7-randomN.length)).toString()    )
     x.splice(lowestInter <=parseInt(e.target.dataset["key"]) ? parseInt(e.target.dataset["key"] - (7 -randomN.length)):parseInt(e.target.dataset["key"]) ,1)
