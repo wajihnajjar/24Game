@@ -162,7 +162,9 @@ if(ref.current.children[0].offsetTop-e.y<=15){
     // Need To get The Index Of element Selected from the number ; 
     //e.target.dataset["key"] index if The P 
 
-         
+         // 1 2 3 4 5 6
+         //x
+         // 1 2 3 * 5 6 
 
     let t = [...test]
     t[Index]=data.node.textContent
