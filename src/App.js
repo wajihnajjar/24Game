@@ -235,7 +235,8 @@ if(ref.current.children[0].offsetTop-e.y<=15){
       <Draggable
       key={index}
       onStop={onStop}
-      
+      defaultPosition={{x: 0, y: 0}}
+
       > 
             <p key={index} data-key={index} style={{marginLeft:"2rem"}}>{number}</p>
       </Draggable>
