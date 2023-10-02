@@ -39,7 +39,6 @@ function App() {
     }
   }
 useEffect(()=>{
-console.log(randomN," ",test , " " )
 // Bug in React Drop 
 if(numberRef!=undefined  && randomN.length==7 ){
   for (let i = 0 ; i< numberRef.current.children.length; i ++){
@@ -53,7 +52,6 @@ if(numberRef!=undefined  && randomN.length==7 ){
 }
 }
 if(randomN.length<7){
-  console.log("Here")
   for (let i = 0 ; i< numberRef.current.children.length; i ++){
     if(numberRef.current.children[i].style.transform!="translate(0px, 0px)"){
       numberRef.current.children[i].style.transform="translate(0px, 0px)"
@@ -61,7 +59,7 @@ if(randomN.length<7){
 }
 }
 //
-console.log(lowestInter , "this is inter")
+GetTheSomme()
 if(test[0]=="*5"){
 console.log('************')
   setCurrLevel(prev=>prev+1)
@@ -85,6 +83,7 @@ console.log('************')
 
 
   const doTheSum = (stack)=>{
+    console.log("This is The Stack " ,stack )
     for(let i = 0 ; i< stack.length; i ++){
       if(stack[i]=="*" || stack[i]=="/"){
         let x = parseInt(stack[i-1])
@@ -121,7 +120,6 @@ console.log('************')
 
 
     }
-console.log(stack , "t his ")
     setSum(stack[0])
     if(stack[0]==24){
       alert.success('Level Finished', {
@@ -137,7 +135,6 @@ console.log(stack , "t his ")
     // in Case OF All inputs are full make this function work and change The state
     let Arr = ref.current.children 
     Arr=test
-    console.log(Arr , "this is the array to test it ")
     for (let i = 0 ; i< Arr.length ; i ++){
       if(Arr[i]==""){
         console.log("Here 2 ")
@@ -162,13 +159,17 @@ console.log(stack , "t his ")
       doTheSum(stack)
   }
   const deleteElementFromP = (e)=>{
+    if(e.target.textContent.length>0){
    let arr = [...randomN]
-   arr.push("*")
+   arr.push(e.target.textContent)
    setRand(arr)
-    console.log(numberRef.current.children.addChild)
-    e.target.textContent=""
-    GetTheSomme()
-
+   let Temp = [...test]
+   console.log(e)
+   Temp[parseInt(e.target.Indx)]="*"
+   setTest(Temp)
+   
+   GetTheSomme()
+    }
   }
   const onStop=(e,data)=>{
     let Max = 1000
@@ -202,7 +203,14 @@ if(ref.current.children[0].offsetTop-e.y<=15){
     e.target.dataset["key"]= (parseInt( e.target.dataset["key"]) - (7-randomN.length)).toString()
     console.log ("8//////////////////// ",(parseInt( e.target.dataset["key"]) - (7-randomN.length)).toString()    )
  */
-    x.splice(lowestInter <=(e.target.dataset["key"]) ? parseInt(e.target.dataset["key"] - (6 -randomN.length)):parseInt(e.target.dataset["key"]) ,1)
+// Deleting Happen To Wrong Element
+console.log(data.node.Indx, "Creating Index")
+  if(data.node.Indx==undefined){
+    data.node.Indx=e.target.dataset["key"]
+  }  
+  console.log(data.node.Indx, "After Creating Index")
+
+  x.splice(parseInt(e.target.dataset["key"]) ,1)
     console.log(lowestInter ," ***/" , e.target.dataset["key"])
  
     let mm = Math.min(lowestInter , (parseInt( e.target.dataset["key"])) )
@@ -237,14 +245,9 @@ if(ref.current.children[0].offsetTop-e.y<=15){
         >
       {randomN.map((number,index)=>{
     return(
-      <Draggable
-      key={index}
-      onStop={onStop}
-
-      > 
-            <p key={index} data-key={index} style={{marginLeft:"2rem"}}>{number}</p>
-      </Draggable>
-
+     
+            <p draggable key={index} data-key={index} style={{marginLeft:"2rem"}}>{number}</p>
+     
        )    
      })}
       </div>
