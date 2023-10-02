@@ -163,11 +163,16 @@ console.log('************')
    let arr = [...randomN]
    arr.push(e.target.textContent)
    let Temp = [...test]
-   console.log(e.target.Indx)
-   Temp[parseInt(e.target.Indx)]="*"
+   console.log(e)
+   e.target.textContent = "**"
+   let idx = -1  
+   for( let i = 0 ; i< ref.current.children.length ; i ++ ){
+    if(ref.current.children[i].textContent=="**")
+      idx= i
+    }
+   Temp[idx]=""
    setTest(Temp)
    setRand(arr)
-
    GetTheSomme()
     }
   }
@@ -192,7 +197,6 @@ if(ref.current.children[0].offsetTop-e.y<=15){
          // 1 2 3 4 5 6
          //x
          // 1 2 3 * 5 6 
-
     let t = [...test]
     t[Index]=data.node.textContent
     setTest(t)
@@ -205,18 +209,16 @@ if(ref.current.children[0].offsetTop-e.y<=15){
  */
 // Deleting Happen To Wrong Element
 let idex = e.target.dataset["key"]
-
   x.splice(parseInt(e.target.dataset["key"]) ,1)
     console.log(lowestInter ," ***/" , e.target.dataset["key"])
-  
     let mm = Math.min(lowestInter , (parseInt( e.target.dataset["key"])) )
   setLowerInter(mm)
     setRand(x)
-    console.log(data.node.Indx, "Creating Index")
-    if(data.node.Indx==undefined){
-      data.node.Indx=idex
+    console.log(e.target.id, "Creating Index")
+    if(e.target.id==""){
+      e.target.id=idex
     }  
-    console.log(data.node.Indx, "After Creating Index")
+    console.log(e.target.id, "After Creating Index")
 
     GetTheSomme()
   }
@@ -252,7 +254,7 @@ let idex = e.target.dataset["key"]
       onStop={onStop}
 
       > 
-            <p draggable key={index} data-key={index} style={{marginLeft:"2rem"}}>{number}</p>
+            <p  key={index} data-key={index} style={{marginLeft:"2rem"}}>{number}</p>
       </Draggable>
 
        )    
