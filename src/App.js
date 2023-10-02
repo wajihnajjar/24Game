@@ -245,9 +245,14 @@ console.log(data.node.Indx, "Creating Index")
         >
       {randomN.map((number,index)=>{
     return(
-     
+      <Draggable
+      key={index}
+      onStop={onStop}
+
+      > 
             <p draggable key={index} data-key={index} style={{marginLeft:"2rem"}}>{number}</p>
-     
+      </Draggable>
+
        )    
      })}
       </div>
