@@ -46,9 +46,9 @@ useEffect(()=>{
 
 console.log(randomN," ",test , " " )
 // Bug in React Drop 
-if(numberRef!=undefined && randomN.length==7 ){
+if(numberRef!=undefined  && randomN.length==7 ){
   for (let i = 0 ; i< numberRef.current.children.length; i ++){
-    console.log(numberRef.current.children[i].style)
+    console.log(numberRef.current.children[i].style.height)
     if(numberRef.current.children[i].style.transform!="translate(0px, 0px)"){
       numberRef.current.children[i].style.transform=""
     }
@@ -63,11 +63,11 @@ if(numberRef!=undefined && randomN.length==7 ){
 if(randomN.length<7){
   console.log("Here")
   for (let i = 0 ; i< numberRef.current.children.length; i ++){
+    if(numberRef.current.children[i].style.transform!="translate(0px, 0px)"){
+      numberRef.current.children[i].style.transform="translate(0px, 0px)"
+    }
+
     console.log(numberRef.current.children[i].style)
-     numberRef.current.children[i].offsetHeight  =  numberRef.current.children[i].x
-     numberRef.current.children[i].offsetLeft = numberRef.current.children[i]. y
-     numberRef.current.children[i].offsetTop  = numberRef.current.children[i].z 
-     numberRef.current.children[i].offsetWidth = numberRef.current.children[i].r
 
 
 }
