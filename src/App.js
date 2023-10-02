@@ -43,7 +43,7 @@ function App() {
 
 useEffect(()=>{
 console.log(randomN," ",test)
-if(test[0]=="*"){
+if(test[0]=="*5"){
 console.log('************')
   setCurrLevel(prev=>prev+1)
 }
@@ -136,7 +136,7 @@ console.log('************')
   }
   const deleteElementFromP = (e)=>{
    let arr = [...randomN]
-   arr.push(e.target.elem)
+   arr.push("*")
    setRand(arr)
     console.log(numberRef.current.children.addChild)
     e.target.textContent=""
@@ -144,7 +144,6 @@ console.log('************')
 
   }
   const onStop=(e,data)=>{
-    console.log(e," ",data.node.childElementCount)
     let Max = 1000
     let Index =-1 
 if(ref.current.children[0].offsetTop-e.y<=15){
@@ -158,11 +157,17 @@ if(ref.current.children[0].offsetTop-e.y<=15){
       }
 
     }
+    // Index is the Index of the input 
+    // Need To get The Index Of element Selected from the number ; 
     
+
     let t = [...test]
-    
     t[0]=data.node.textContent
     setTest(t)
+    let x = [...randomN]
+    console.log(Index , " --4 " ,e)
+    x.pop()
+    setRand(x)
     GetTheSomme()
   }
 
