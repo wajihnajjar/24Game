@@ -61,7 +61,16 @@ if(numberRef!=undefined && randomN.length==7 ){
 }
 }
 if(randomN.length<7){
-  
+  console.log("Here")
+  for (let i = 0 ; i< numberRef.current.children.length; i ++){
+    console.log(numberRef.current.children[i].style)
+     numberRef.current.children[i].offsetHeight  =  numberRef.current.children[i].x
+     numberRef.current.children[i].offsetLeft = numberRef.current.children[i]. y
+     numberRef.current.children[i].offsetTop  = numberRef.current.children[i].z 
+     numberRef.current.children[i].offsetWidth = numberRef.current.children[i].r
+
+
+}
 }
 //
 if(test[0]=="*5"){
