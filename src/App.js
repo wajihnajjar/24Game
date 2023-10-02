@@ -42,7 +42,18 @@ function App() {
   }
 
 useEffect(()=>{
-console.log(randomN," ",test)
+
+console.log(randomN," ",test , " " )
+// Bug in React Drop 
+if(numberRef!=undefined){
+  console.log(numberRef)
+  for (let i = 0 ; i< numberRef.current.children.length; i ++){
+    if(numberRef.current.children[i].style.transform!="translate(0px, 0px)"){
+      numberRef.current.children[i].style.transform="translate(0px, 0px)"
+    }
+
+}
+}
 if(test[0]=="*5"){
 console.log('************')
   setCurrLevel(prev=>prev+1)
