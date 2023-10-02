@@ -18,7 +18,7 @@ function App() {
   const [randomN , setRand] = useState([])
   const [allLevels , setLeveles] = useState([])
   const [currLevel , setCurrLevel] = useState(0)
-  const [test,setTest] = useState(["*","*","*","*","*","*","*"])
+  const [test,setTest] = useState(["","","","","","",""])
   const [sum , setSum] = useState(-1)
   const clearTheInputs = ()=>{
     for (let i = 0 ; i< ref.current.children.length ; i ++){
@@ -42,7 +42,7 @@ function App() {
   }
 
 useEffect(()=>{
-console.log(randomN)
+console.log(randomN," ",test)
 },[randomN])
 
   useEffect(()=>{
@@ -105,11 +105,8 @@ console.log(randomN)
           setSum(0)
         } 
       })
-  
     }
-
   }
-
   const GetTheSomme = ()=>{
     // in Case OF All inputs are full make this function work and change The state
     let Arr = ref.current.children 
@@ -132,10 +129,7 @@ console.log(randomN)
       }
     }
       doTheSum(stack)
-
   }
-
-
   const deleteElementFromP = (e)=>{
    let arr = [...randomN]
    arr.push(e.target.elem)
@@ -160,10 +154,13 @@ if(ref.current.children[0].offsetTop-e.y<=15){
       }
 
     }
-    ref.current.children[Index].elem=data.node.textContent
-    ref.current.children[Index].textContent=data.node.textContent
-    data.node.remove()
-  
+    
+    let t = [...test]
+    t[0]=data.node.textContent
+    setTest(t)
+    let x = [...randomN]
+    x.pop() 
+    setRand(x)
     GetTheSomme()
   }
 
