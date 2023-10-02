@@ -46,15 +46,24 @@ useEffect(()=>{
 
 console.log(randomN," ",test , " " )
 // Bug in React Drop 
-if(numberRef!=undefined){
+if(numberRef!=undefined && randomN.length==7 ){
   for (let i = 0 ; i< numberRef.current.children.length; i ++){
     console.log(numberRef.current.children[i].style)
     if(numberRef.current.children[i].style.transform!="translate(0px, 0px)"){
-      numberRef.current.children[i].style.transform="translate(0px, 0px)"
+      numberRef.current.children[i].style.transform=""
     }
+     numberRef.current.children[i].x  =  numberRef.current.children[i].offsetHeight
+     numberRef.current.children[i].y = numberRef.current.children[i].offsetLeft 
+     numberRef.current.children[i].z  = numberRef.current.children[i].offsetTop 
+     numberRef.current.children[i].r = numberRef.current.children[i].offsetWidth
+
 
 }
 }
+if(randomN.length<7){
+  
+}
+//
 if(test[0]=="*5"){
 console.log('************')
   setCurrLevel(prev=>prev+1)
