@@ -135,8 +135,10 @@ console.log(stack , "t his ")
   const GetTheSomme = ()=>{
     // in Case OF All inputs are full make this function work and change The state
     let Arr = ref.current.children 
+    Arr=test
+    console.log(Arr , "this is the array to test it ")
     for (let i = 0 ; i< Arr.length ; i ++){
-      if(Arr[i].textContent==""){
+      if(Arr[i]==""){
         console.log("Here 2 ")
 
         setSum(-1)
@@ -145,7 +147,7 @@ console.log(stack , "t his ")
     }
     let stack = []
     for (let i = 0 ; i< Arr.length ; i ++){
-      stack.push(Arr[i].textContent)
+      stack.push(Arr[i])
     }
     let operator = ["+" ,"-","/","*"]
     for( let i = 1 ; i< stack.length; i ++)
