@@ -162,12 +162,12 @@ console.log('************')
     if(e.target.textContent.length>0){
    let arr = [...randomN]
    arr.push(e.target.textContent)
-   setRand(arr)
    let Temp = [...test]
-   console.log(e)
+   console.log(e.target.Indx)
    Temp[parseInt(e.target.Indx)]="*"
    setTest(Temp)
-   
+   setRand(arr)
+
    GetTheSomme()
     }
   }
@@ -204,18 +204,20 @@ if(ref.current.children[0].offsetTop-e.y<=15){
     console.log ("8//////////////////// ",(parseInt( e.target.dataset["key"]) - (7-randomN.length)).toString()    )
  */
 // Deleting Happen To Wrong Element
-console.log(data.node.Indx, "Creating Index")
-  if(data.node.Indx==undefined){
-    data.node.Indx=e.target.dataset["key"]
-  }  
-  console.log(data.node.Indx, "After Creating Index")
+let idex = e.target.dataset["key"]
 
   x.splice(parseInt(e.target.dataset["key"]) ,1)
     console.log(lowestInter ," ***/" , e.target.dataset["key"])
- 
+  
     let mm = Math.min(lowestInter , (parseInt( e.target.dataset["key"])) )
   setLowerInter(mm)
     setRand(x)
+    console.log(data.node.Indx, "Creating Index")
+    if(data.node.Indx==undefined){
+      data.node.Indx=idex
+    }  
+    console.log(data.node.Indx, "After Creating Index")
+
     GetTheSomme()
   }
 
