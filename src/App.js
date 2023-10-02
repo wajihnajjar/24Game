@@ -21,13 +21,13 @@ function App() {
   const [test,setTest] = useState(["","","","","","",""])
   const [sum , setSum] = useState(-1)
   const clearTheInputs = ()=>{
-    for (let i = 0 ; i< ref.current.children.length ; i ++){
-      ref.current.children[i].textContent = ""
-    }
+    setTest(["","","","","","",""])
+
   }
   const changeState = ()=>{
     if(allLevels.length>0){
       clearTheInputs()
+      console.log(currLevel, "this is the levels")
       let {content} = allLevels[currLevel] 
       console.log(numberRef)
       let tempArray  = []
@@ -43,7 +43,11 @@ function App() {
 
 useEffect(()=>{
 console.log(randomN," ",test)
-},[randomN])
+if(test[0]=="*"){
+console.log('************')
+  setCurrLevel(prev=>prev+1)
+}
+},[randomN,test])
 
   useEffect(()=>{
     changeState()
@@ -58,7 +62,7 @@ console.log(randomN," ",test)
         let data = res.data 
         setLeveles(data)
       })
-  },[test])
+  },[])
 
 
   const doTheSum = (stack)=>{
@@ -156,11 +160,9 @@ if(ref.current.children[0].offsetTop-e.y<=15){
     }
     
     let t = [...test]
+    
     t[0]=data.node.textContent
     setTest(t)
-    let x = [...randomN]
-    x.pop() 
-    setRand(x)
     GetTheSomme()
   }
 
@@ -191,6 +193,7 @@ if(ref.current.children[0].offsetTop-e.y<=15){
       {randomN.map((number,index)=>{
     return(
       <Draggable
+      key={index}
       onStop={onStop}
       
       > 
@@ -214,7 +217,7 @@ if(ref.current.children[0].offsetTop-e.y<=15){
           display:"flex" , 
           justifyContent:"center" , 
           alignItems:"center"
-        }}></p>
+        }}>{number}</p>
       })}
       </div>
       <p
