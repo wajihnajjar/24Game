@@ -118,7 +118,9 @@ console.log('************')
       
       }
 
+
     }
+console.log(stack , "t his ")
     setSum(stack[0])
     if(stack[0]==24){
       alert.success('Level Finished', {
@@ -189,11 +191,15 @@ if(ref.current.children[0].offsetTop-e.y<=15){
     t[Index]=data.node.textContent
     setTest(t)
     let x = [...randomN]
+    /*
+    The Error Is Round here
     console.log(e.target.dataset["key"])
     e.target.dataset["key"]= (parseInt( e.target.dataset["key"]) - (7-randomN.length)).toString()
     console.log ("8//////////////////// ",(parseInt( e.target.dataset["key"]) - (7-randomN.length)).toString()    )
-    x.splice(lowestInter <=parseInt(e.target.dataset["key"]) ? parseInt(e.target.dataset["key"] - (7 -randomN.length)):parseInt(e.target.dataset["key"]) ,1)
+ */
+    x.splice(lowestInter <=(e.target.dataset["key"]) ? parseInt(e.target.dataset["key"] - (6 -randomN.length)):parseInt(e.target.dataset["key"]) ,1)
     console.log(lowestInter ," ***/" , e.target.dataset["key"])
+ 
     let mm = Math.min(lowestInter , (parseInt( e.target.dataset["key"])) )
   setLowerInter(mm)
     setRand(x)
