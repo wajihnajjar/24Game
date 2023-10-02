@@ -23,7 +23,6 @@ function App() {
   const [lowestInter , setLowerInter] = useState(8)
   const clearTheInputs = ()=>{
     setTest(["","","","","","",""])
-
   }
   const changeState = ()=>{
     if(allLevels.length>0){
@@ -37,18 +36,13 @@ function App() {
       }
       tempArray=tempArray.concat(['+','-','*'])
       setRand([...tempArray])
-     
     }
-    
   }
-
 useEffect(()=>{
-
 console.log(randomN," ",test , " " )
 // Bug in React Drop 
 if(numberRef!=undefined  && randomN.length==7 ){
   for (let i = 0 ; i< numberRef.current.children.length; i ++){
-    console.log(numberRef.current.children[i].style.height)
     if(numberRef.current.children[i].style.transform!="translate(0px, 0px)"){
       numberRef.current.children[i].style.transform=""
     }
@@ -56,8 +50,6 @@ if(numberRef!=undefined  && randomN.length==7 ){
      numberRef.current.children[i].y = numberRef.current.children[i].offsetLeft 
      numberRef.current.children[i].z  = numberRef.current.children[i].offsetTop 
      numberRef.current.children[i].r = numberRef.current.children[i].offsetWidth
-
-
 }
 }
 if(randomN.length<7){
@@ -66,18 +58,15 @@ if(randomN.length<7){
     if(numberRef.current.children[i].style.transform!="translate(0px, 0px)"){
       numberRef.current.children[i].style.transform="translate(0px, 0px)"
     }
-
-    console.log(numberRef.current.children[i].style)
-
-
 }
 }
 //
+console.log(lowestInter , "this is inter")
 if(test[0]=="*5"){
 console.log('************')
   setCurrLevel(prev=>prev+1)
 }
-},[randomN,test])
+},[randomN,test,lowestInter])
 
   useEffect(()=>{
     changeState()
@@ -200,8 +189,13 @@ if(ref.current.children[0].offsetTop-e.y<=15){
     t[Index]=data.node.textContent
     setTest(t)
     let x = [...randomN]
-    console.log(Index , " --4 " ,e.target.dataset["key"])
-    x.splice(lowestInter <=e.target.dataset["key"] ? parseInt(e.target.dataset["key"] - (6 -randomN.length)):parseInt(e.target.dataset["key"]) ,1)
+    
+    e.target.dataset["key"]= (parseInt( e.target.dataset["key"]) - (7-randomN.length)).toString()
+    console.log ("8//////////////////// ",(parseInt( e.target.dataset["key"]) - (7-randomN.length)).toString()    )
+    x.splice(lowestInter <=parseInt(e.target.dataset["key"]) ? parseInt(e.target.dataset["key"] - (7 -randomN.length)):parseInt(e.target.dataset["key"]) ,1)
+    console.log(lowestInter ," ***/" , e.target.dataset["key"])
+    let mm = Math.min(lowestInter , (parseInt( e.target.dataset["key"])) )
+  setLowerInter(mm)
     setRand(x)
     GetTheSomme()
   }
