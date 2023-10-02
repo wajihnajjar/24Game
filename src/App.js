@@ -132,6 +132,7 @@ console.log('************')
         return false 
       }
     }
+    console.log("CheCking The Formila")
       doTheSum(stack)
   }
   const deleteElementFromP = (e)=>{
@@ -159,14 +160,16 @@ if(ref.current.children[0].offsetTop-e.y<=15){
     }
     // Index is the Index of the input 
     // Need To get The Index Of element Selected from the number ; 
-    
+    //e.target.dataset["key"] index if The P 
+
+         
 
     let t = [...test]
-    t[0]=data.node.textContent
+    t[Index]=data.node.textContent
     setTest(t)
     let x = [...randomN]
-    console.log(Index , " --4 " ,e)
-    x.pop()
+    console.log(Index , " --4 " ,e.target.dataset["key"])
+    x.splice(parseInt(e.target.dataset["key"]),1)
     setRand(x)
     GetTheSomme()
   }
