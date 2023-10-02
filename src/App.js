@@ -20,6 +20,7 @@ function App() {
   const [currLevel , setCurrLevel] = useState(0)
   const [test,setTest] = useState(["","","","","","",""])
   const [sum , setSum] = useState(-1)
+  const [lowestInter , setLowerInter] = useState(8)
   const clearTheInputs = ()=>{
     setTest(["","","","","","",""])
 
@@ -46,8 +47,8 @@ useEffect(()=>{
 console.log(randomN," ",test , " " )
 // Bug in React Drop 
 if(numberRef!=undefined){
-  console.log(numberRef)
   for (let i = 0 ; i< numberRef.current.children.length; i ++){
+    console.log(numberRef.current.children[i].style)
     if(numberRef.current.children[i].style.transform!="translate(0px, 0px)"){
       numberRef.current.children[i].style.transform="translate(0px, 0px)"
     }
@@ -182,7 +183,7 @@ if(ref.current.children[0].offsetTop-e.y<=15){
     setTest(t)
     let x = [...randomN]
     console.log(Index , " --4 " ,e.target.dataset["key"])
-    x.splice(parseInt(e.target.dataset["key"]),1)
+    x.splice(lowestInter <=e.target.dataset["key"] ? parseInt(e.target.dataset["key"] - (6 -randomN.length)):parseInt(e.target.dataset["key"]) ,1)
     setRand(x)
     GetTheSomme()
   }
