@@ -102,6 +102,7 @@ console.log('************')
       }
 
     }
+    console.log(stack)
     for(let i = 0 ; i< stack.length; i ++){
       if(stack[i]=="+" || stack[i]=="-"){
         let x = parseInt(stack[i-1])
