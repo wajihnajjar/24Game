@@ -137,6 +137,8 @@ console.log(stack , "t his ")
     let Arr = ref.current.children 
     for (let i = 0 ; i< Arr.length ; i ++){
       if(Arr[i].textContent==""){
+        console.log("Here 2 ")
+
         setSum(-1)
         return false 
       }
@@ -149,11 +151,11 @@ console.log(stack , "t his ")
     for( let i = 1 ; i< stack.length; i ++)
     {
       if(operator.indexOf(stack[i])!=-1 &&operator.indexOf(stack[i-1])!=-1 ){
+        console.log("Here 3 ")
         setSum(-1)
         return false 
       }
     }
-    console.log("CheCking The Formila")
       doTheSum(stack)
   }
   const deleteElementFromP = (e)=>{
