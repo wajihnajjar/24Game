@@ -74,7 +74,16 @@ GetTheSomme()
   useEffect(()=>{
       axios.get("http://localhost:4001/create/getAllLevelsV1").then(res=>{
         let data = res.data 
-        setLeveles(data)
+        setLeveles(data.filter(elem=>{
+          for (let i = 0 ; i< elem.length; i++){
+            if(elem[i]=="/"){ 
+          console.log(elem)
+              return false 
+            
+          }
+          }
+          return true 
+        }))
       })
   },[])
 
