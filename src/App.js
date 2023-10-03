@@ -208,18 +208,8 @@ if(ref.current.children[0].offsetTop-e.y<=15){
     console.log ("8//////////////////// ",(parseInt( e.target.dataset["key"]) - (7-randomN.length)).toString()    )
  */
 // Deleting Happen To Wrong Element
-let idex = e.target.dataset["key"]
-  x.splice(parseInt(e.target.dataset["key"]) ,1)
-    console.log(lowestInter ," ***/" , e.target.dataset["key"])
-    let mm = Math.min(lowestInter , (parseInt( e.target.dataset["key"])) )
-  setLowerInter(mm)
-    setRand(x)
-    console.log(e.target.id, "Creating Index")
-    if(e.target.id==""){
-      e.target.id=idex
-    }  
-    console.log(e.target.id, "After Creating Index")
-
+    x.splice(parseInt(e.target.dataset["key"]) ,1)
+    setRand(x)    
     GetTheSomme()
   }
 
