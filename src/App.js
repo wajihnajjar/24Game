@@ -170,7 +170,20 @@ GetTheSomme()
       doTheSum(stack)
   }
   const deleteElementFromPV1 = (e)=>{
-    
+    if(e.target.textContent.length>0){
+      let Temp = [...test]
+      console.log(e)
+      e.target.textContent = "**"
+      let idx = -1  
+      for( let i = 0 ; i< ref.current.children.length ; i ++ ){
+       if(ref.current.children[i].textContent=="**")
+         idx= i
+       }
+      Temp[idx]=""
+      setTest(Temp)
+      GetTheSomme()
+       }
+   
   }
   const deleteElementFromP = (e)=>{
     if(e.target.textContent.length>0){
@@ -224,20 +237,6 @@ if(ref.current.children[0].offsetTop-e.y<=15){
 // Deleting Happen To Wrong Element
 // Here We Change Rand Because We Already Take The element 
 // 
-let ret = data.node.textContent
-data.node.textContent = "***"
-let j=  -1 
-console.log(ref)
-for (let i = 0  ;i <numberRef.current.children.length; i ++){
-  if(numberRef.current.children[i].textContent =="***"){
-    j = i 
-    break 
-  }
-}
-data.node.textContent = ret
-    console.log(x , " /// " ,j," ***" , e )
-    x.splice(j,1)
-    setRand(x)    
     setTest(t)
 
     GetTheSomme()
@@ -355,7 +354,7 @@ data.node.textContent = ret
       }}>
        {test.map((number,index)=>{
         return <p key={index}
-        onClick={deleteElementFromP}
+        onClick={deleteElementFromPV1}
         style={{
           marginLeft:"2rem" , 
           height:"3em" , 
