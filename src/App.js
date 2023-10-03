@@ -170,6 +170,7 @@ console.log('************')
     if(ref.current.children[i].textContent=="**")
       idx= i
     }
+    console.log(arr , "this is the Array Of number ")
    Temp[idx]=""
    setTest(Temp)
    setRand(arr)
@@ -208,7 +209,8 @@ if(ref.current.children[0].offsetTop-e.y<=15){
     console.log ("8//////////////////// ",(parseInt( e.target.dataset["key"]) - (7-randomN.length)).toString()    )
  */
 // Deleting Happen To Wrong Element
-    x.splice(parseInt(e.target.dataset["key"]) ,1)
+    console.log(x , " /// " ,e.target.dataset["key"] ," ***" , e )
+    x.splice(parseInt(e.target.dataset["key"])==undefined ? 0 : parseInt(e.target.dataset["key"]),1)
     setRand(x)    
     GetTheSomme()
   }
