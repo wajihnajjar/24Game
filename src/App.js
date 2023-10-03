@@ -248,6 +248,14 @@ data.node.textContent = ret
         alignItems:"center" , 
         flexDirection:"column"
      }}>
+      <div style={{
+                  border:"3px solid white",
+                  padding:"0px 15px 0px 15px"
+
+      }}>
+        1/10
+
+      </div>
 
       <div
        style={{
@@ -287,13 +295,16 @@ data.node.textContent = ret
           border:"4px solid white",
           display:"flex" , 
           justifyContent:"center" , 
-          alignItems:"center"
+          alignItems:"center",          fontSize:"1.5rem"
+
+
         }}>{number}</p>
       })}
       </div>
       <p
         style={{
-          fontSize:"1.5em"
+          fontWeight:"bold" , 
+          fontSize:"1.5rem"
         }}
       >{sum}=24</p>
       </div>
