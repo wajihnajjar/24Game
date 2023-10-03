@@ -263,7 +263,12 @@ data.node.textContent = ret
       onStop={onStop}
 
       > 
-            <p  data-key={index} style={{marginLeft:"2rem"}}>{number}</p>
+            <p  data-key={index} style={{
+          marginLeft:"2rem"
+          ,
+          fontWeight:"bold" , 
+          fontSize:"1.5rem"
+          }}>{number}</p>
       </Draggable>
 
        )    
@@ -279,7 +284,7 @@ data.node.textContent = ret
           marginLeft:"2rem" , 
           height:"3em" , 
           width:"3em",
-          border:"1px solid black",
+          border:"4px solid white",
           display:"flex" , 
           justifyContent:"center" , 
           alignItems:"center"
