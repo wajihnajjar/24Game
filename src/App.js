@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import Draggable from 'react-draggable';
 import { useAlert } from "react-alert";
 import axios from "axios"
+import Background from "./endless-constellation.png"
 import ReactDOM from 'react-dom';
 const createRandomNumber =()=>{
   return Math.floor(Math.random()*1000)
@@ -17,7 +18,7 @@ function App() {
   const numberRef = useRef(null)
   const [randomN , setRand] = useState([])
   const [allLevels , setLeveles] = useState([])
-  const [currLevel , setCurrLevel] = useState(0)
+  const [currLevel , setCurrLevel] = useState(3)
   const [test,setTest] = useState(["","","","","","",""])
   const [sum , setSum] = useState(0)
   const [lowestInter , setLowerInter] = useState(8)
@@ -234,7 +235,9 @@ data.node.textContent = ret
     <div style={{
       height:"100vh", 
       display:'flex',
-      width:"100vw"
+      width:"100vw" , 
+      backgroundImage:`url(${Background})`,
+      overflow:"hidden"
       
     }}>
       <div style={{
