@@ -19,7 +19,7 @@ function App() {
   const [allLevels , setLeveles] = useState([])
   const [currLevel , setCurrLevel] = useState(0)
   const [test,setTest] = useState(["","","","","","",""])
-  const [sum , setSum] = useState(-1)
+  const [sum , setSum] = useState(0)
   const [lowestInter , setLowerInter] = useState(8)
   const clearTheInputs = ()=>{
     setTest(["","","","","","",""])
@@ -220,7 +220,7 @@ for (let i = 0  ;i <numberRef.current.children.length; i ++){
     break 
   }
 }
-//data.node.textContent = ret
+data.node.textContent = ret
     console.log(x , " /// " ,j," ***" , e )
     x.splice(j,1)
     setRand(x)    
@@ -285,7 +285,7 @@ for (let i = 0  ;i <numberRef.current.children.length; i ++){
       </div>
       <p
         style={{
-          fontSize:"2em"
+          fontSize:"1.5em"
         }}
       >{sum}=24</p>
       </div>
