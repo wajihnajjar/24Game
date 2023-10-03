@@ -214,13 +214,13 @@ let ret = data.node.textContent
 data.node.textContent = "***"
 let j=  -1 
 console.log(ref)
-for (let i = 0  ;i <ref.current.children.length; i ++){
-  if(ref.current.children[i].textContent =="***"){
+for (let i = 0  ;i <numberRef.current.children.length; i ++){
+  if(numberRef.current.children[i].textContent =="***"){
     j = i 
     break 
   }
 }
-data.node.textContent = ret
+//data.node.textContent = ret
     console.log(x , " /// " ,j," ***" , e )
     x.splice(j,1)
     setRand(x)    
