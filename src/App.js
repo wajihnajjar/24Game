@@ -200,7 +200,6 @@ if(ref.current.children[0].offsetTop-e.y<=15){
          // 1 2 3 * 5 6 
     let t = [...test]
     t[Index]=data.node.textContent
-    setTest(t)
     let x = [...randomN]
     /*
     The Error Is Round here
@@ -209,9 +208,21 @@ if(ref.current.children[0].offsetTop-e.y<=15){
     console.log ("8//////////////////// ",(parseInt( e.target.dataset["key"]) - (7-randomN.length)).toString()    )
  */
 // Deleting Happen To Wrong Element
-    console.log(x , " /// " ,e.target.dataset["key"] ," ***" , e )
-    x.splice(parseInt(e.target.dataset["key"])==undefined ? 0 : parseInt(e.target.dataset["key"]),1)
+// Here We Change Rand Because We Already Take The element 
+// 
+e.target.textContent = "***"
+let j=  -1 
+for (let i = 0  ;i <numberRef.current.children.length; i ++){
+  if(numberRef.current.children[i].textContent =="***"){
+    j = i 
+    break 
+  }
+}
+    console.log(x , " /// " ,j," ***" , e )
+    x.splice(j,1)
     setRand(x)    
+    setTest(t)
+
     GetTheSomme()
   }
 
