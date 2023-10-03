@@ -13,6 +13,11 @@
   }
 }
 
+
+.Number:hover{
+  transition: font-weight bold ease-in-out;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

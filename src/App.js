@@ -35,7 +35,7 @@ function App() {
       for (let i = 0 ; i< content.length ; i+=2){
         tempArray.push(parseInt(content[i]))
       }
-      tempArray=tempArray.concat(['+','-','*','/'])
+      tempArray=tempArray.concat(['+','-','*'])
       setRand([...tempArray])
     }
   }
@@ -352,10 +352,10 @@ data.node.textContent = ret
       onStop={onStopV1}
 
       > 
-            <p  data-key={index} style={{
+            <p  data-key={index} className='Number' style={{
           marginLeft:"2rem"
           ,
-          fontWeight:"bold" , 
+          fontWeight:"200px" , 
           fontSize:"1.5rem"
           }}>{number}</p>
       </Draggable>
