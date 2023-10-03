@@ -35,7 +35,7 @@ function App() {
       for (let i = 0 ; i< content.length ; i+=2){
         tempArray.push(parseInt(content[i]))
       }
-      tempArray=tempArray.concat(['+','-','*'])
+      tempArray=tempArray.concat(['+','-','*','/'])
       setRand([...tempArray])
     }
   }
@@ -86,7 +86,6 @@ GetTheSomme()
           }
           if(!bool)
             {
-              console.log(data[i])
               t.push(data[i])
             }
         }
@@ -165,9 +164,8 @@ GetTheSomme()
     Arr=test
     for (let i = 0 ; i< Arr.length ; i ++){
       if(Arr[i]==""){
-        console.log("Here 2 ")
 
-        setSum(-1)
+        setSum(0)
         return false 
       }
     }
@@ -179,8 +177,7 @@ GetTheSomme()
     for( let i = 1 ; i< stack.length; i ++)
     {
       if(operator.indexOf(stack[i])!=-1 &&operator.indexOf(stack[i-1])!=-1 ){
-        console.log("Here 3 ")
-        setSum(-1)
+        setSum(0)
         return false 
       }
     }
@@ -244,7 +241,7 @@ if(ref.current.children[0].offsetTop-e.y<=15){
          // 1 2 3 * 5 6 
     let t = [...test]
     t[Index]=data.node.textContent
-    let x = [...randomN]
+    console.log(t)
     /*
     The Error Is Round here
     console.log(e.target.dataset["key"])
