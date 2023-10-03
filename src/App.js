@@ -18,7 +18,7 @@ function App() {
   const numberRef = useRef(null)
   const [randomN , setRand] = useState([])
   const [allLevels , setLeveles] = useState([])
-  const [currLevel , setCurrLevel] = useState(3)
+  const [currLevel , setCurrLevel] = useState(0)
   const [test,setTest] = useState(["","","","","","",""])
   const [sum , setSum] = useState(0)
   const [lowestInter , setLowerInter] = useState(8)
@@ -253,7 +253,7 @@ data.node.textContent = ret
                   padding:"0px 15px 0px 15px"
 
       }}>
-        1/10
+        {currLevel}/{allLevels.length}
 
       </div>
 
