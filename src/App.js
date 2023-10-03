@@ -18,7 +18,7 @@ function App() {
   const numberRef = useRef(null)
   const [randomN , setRand] = useState([])
   const [allLevels , setLeveles] = useState([])
-  const [currLevel , setCurrLevel] = useState(0)
+  const [currLevel , setCurrLevel] = useState(12)
   const [test,setTest] = useState(["","","","","","",""])
   const [sum , setSum] = useState(0)
   const [lowestInter , setLowerInter] = useState(8)
@@ -122,7 +122,7 @@ console.log('************')
 
     }
     setSum(stack[0])
-    if(currLevel!=13){
+    if(currLevel!=14){
     if(stack[0]==24){
       alert.success('Level Finished', {
         timeout: 4000, // custom timeout just for this one alert
