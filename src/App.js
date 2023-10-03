@@ -122,6 +122,7 @@ console.log('************')
 
     }
     setSum(stack[0])
+    if(currLevel!=13){
     if(stack[0]==24){
       alert.success('Level Finished', {
         timeout: 4000, // custom timeout just for this one alert
@@ -131,6 +132,19 @@ console.log('************')
         } 
       })
     }
+  }
+  else {
+    if(stack[0]==24){
+      alert.success('Game Finished', {
+        timeout: 4000, // custom timeout just for this one alert
+        onClose: () => {
+          setCurrLevel(0)
+          setSum(0)
+        } 
+      })
+    }
+
+  }
   }
   const GetTheSomme = ()=>{
     // in Case OF All inputs are full make this function work and change The state
@@ -253,7 +267,7 @@ data.node.textContent = ret
                   padding:"0px 15px 0px 15px"
 
       }}>
-        {currLevel}/{allLevels.length}
+        {currLevel+1}/{allLevels.length}
 
       </div>
 
