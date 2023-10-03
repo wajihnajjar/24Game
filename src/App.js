@@ -18,7 +18,7 @@ function App() {
   const numberRef = useRef(null)
   const [randomN , setRand] = useState([])
   const [allLevels , setLeveles] = useState([])
-  const [currLevel , setCurrLevel] = useState(13)
+  const [currLevel , setCurrLevel] = useState(4)
   const [test,setTest] = useState(["","","","","","",""])
   const [sum , setSum] = useState(0)
   const [lowestInter , setLowerInter] = useState(8)
@@ -61,10 +61,6 @@ if(randomN.length<7){
 }
 //
 GetTheSomme()
-if(test[0]=="*5"){
-console.log('************')
-  setCurrLevel(prev=>prev+1)
-}
 },[randomN,test,lowestInter])
 
   useEffect(()=>{
