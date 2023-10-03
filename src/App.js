@@ -169,6 +169,9 @@ GetTheSomme()
     }
       doTheSum(stack)
   }
+  const deleteElementFromPV1 = (e)=>{
+    
+  }
   const deleteElementFromP = (e)=>{
     if(e.target.textContent.length>0){
    let arr = [...randomN]
@@ -187,6 +190,61 @@ GetTheSomme()
    setRand(arr)
    GetTheSomme()
     }
+  }
+  const onStopV1 = (e,data)=>{
+    let Max = 1000
+    let Index =-1 
+if(ref.current.children[0].offsetTop-e.y<=15){
+    for (let i = 0 ; i< ref.current.children.length ; i ++){
+      let x = ref.current.children[i].offsetTop
+      let y =ref.current.children[i].offsetLeft
+      let curr = (Math.sqrt(((x-e.y)*(x-e.y)) + ((y-e.x)*(y-e.x))))
+      if(Math.floor(curr)<Max){
+        Max=Math.floor(curr)
+        Index = i  ; 
+      }
+
+    }
+    // Index is the Index of the input 
+    // Need To get The Index Of element Selected from the number ; 
+    //e.target.dataset["key"] index if The P 
+
+         // 1 2 3 4 5 6
+         //x
+         // 1 2 3 * 5 6 
+    let t = [...test]
+    t[Index]=data.node.textContent
+    let x = [...randomN]
+    /*
+    The Error Is Round here
+    console.log(e.target.dataset["key"])
+    e.target.dataset["key"]= (parseInt( e.target.dataset["key"]) - (7-randomN.length)).toString()
+    console.log ("8//////////////////// ",(parseInt( e.target.dataset["key"]) - (7-randomN.length)).toString()    )
+ */
+// Deleting Happen To Wrong Element
+// Here We Change Rand Because We Already Take The element 
+// 
+let ret = data.node.textContent
+data.node.textContent = "***"
+let j=  -1 
+console.log(ref)
+for (let i = 0  ;i <numberRef.current.children.length; i ++){
+  if(numberRef.current.children[i].textContent =="***"){
+    j = i 
+    break 
+  }
+}
+data.node.textContent = ret
+    console.log(x , " /// " ,j," ***" , e )
+    x.splice(j,1)
+    setRand(x)    
+    setTest(t)
+
+    GetTheSomme()
+  }
+
+
+
   }
   const onStop=(e,data)=>{
     let Max = 1000
@@ -278,7 +336,7 @@ data.node.textContent = ret
     return(
       <Draggable
       key={index}
-      onStop={onStop}
+      onStop={onStopV1}
 
       > 
             <p  data-key={index} style={{
