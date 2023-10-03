@@ -75,16 +75,17 @@ GetTheSomme()
       axios.get("http://localhost:4001/create/getAllLevelsV1").then(res=>{
         let data = res.data 
         setLeveles(data.filter(elem=>{
+          for (let i = 0 ; i< elem["content"].length; i++){
+            console.log(elem["content"][  i])
+            if(elem["content"][i]==("/")){ 
 
-          for (let i = 0 ; i< elem.length; i++){
-            console.log(elem[i])
-          
-            if(elem[i]=="*"){ 
+              //console.log(elem["content"][i])
               return false 
             
           }
-          }
           return true 
+
+          }
         }))
       })
   },[])
