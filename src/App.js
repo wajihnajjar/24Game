@@ -18,7 +18,7 @@ function App() {
   const numberRef = useRef(null)
   const [randomN , setRand] = useState([])
   const [allLevels , setLeveles] = useState([])
-  const [currLevel , setCurrLevel] = useState(95)
+  const [currLevel , setCurrLevel] = useState(0)
   const [test,setTest] = useState(["","","","","","",""])
   const [sum , setSum] = useState(0)
   const [lowestInter , setLowerInter] = useState(8)
