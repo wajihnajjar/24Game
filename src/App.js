@@ -84,21 +84,11 @@ return true
         let data = res.data 
         let t = []
         for (let i = 0 ; i< data.length; i ++){
-          let bool  = false 
-          for (let j = 0 ; j< data[i]["content"].length;j++){
-            if(!checkForEquation(data[i]["content"][j]))
-              {
-                bool=true 
-                break 
-              }
-          }
-          if(!bool)
-            {
-              t.push(data[i])
-            }
+          if(checkForEquation(data[i]["content"]))
+            t.push(data[i])
+         
         }
         setLeveles(t)
-      
       })
   },[])
 
