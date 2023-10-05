@@ -18,7 +18,7 @@ function App() {
   const numberRef = useRef(null)
   const [randomN , setRand] = useState([])
   const [allLevels , setLeveles] = useState([])
-  const [currLevel , setCurrLevel] = useState(0)
+  const [currLevel , setCurrLevel] = useState(15)
   const [test,setTest] = useState(["","","","","","",""])
   const [sum , setSum] = useState(0)
   const [lowestInter , setLowerInter] = useState(8)
@@ -69,7 +69,15 @@ GetTheSomme()
 
   },[allLevels,currLevel])
 
-
+const checkForEquation = (str)=>{
+for (let i = 3  ; i< str.length;  i +=2){
+      if((str[i]=='*' || str[i]=='/') && (str[i-2] == '+'  || str[i-2]=='-'))
+        {
+          return false 
+        }
+    } 
+return true 
+}
 
   useEffect(()=>{
       axios.get("http://localhost:4001/create/getAllLevelsV1").then(res=>{
@@ -78,7 +86,7 @@ GetTheSomme()
         for (let i = 0 ; i< data.length; i ++){
           let bool  = false 
           for (let j = 0 ; j< data[i]["content"].length;j++){
-            if(data[i]["content"][j]=="/")
+            if(!checkForEquation(data[i]["content"][j]))
               {
                 bool=true 
                 break 
