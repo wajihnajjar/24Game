@@ -357,7 +357,7 @@ data.node.textContent = ret
             <p  data-key={index} className='Number' style={{
           marginLeft:"2rem"
           ,
-          fontWeight:"200px" , 
+          fontWeight:"bold" , 
           fontSize:"1.5rem"
           }}>{number}</p>
       </Draggable>
