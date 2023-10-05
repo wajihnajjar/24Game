@@ -35,13 +35,13 @@ function App() {
       for (let i = 0 ; i< content.length ; i+=2){
         tempArray.push(parseInt(content[i]))
       }
-      tempArray=tempArray.concat(['+','-','*'])
+      tempArray=tempArray.concat(['+','-','*','/'])
       setRand([...tempArray])
     }
   }
 useEffect(()=>{
 // Bug in React Drop 
-if(numberRef!=undefined  && randomN.length==7 ){
+if(numberRef!=undefined  && randomN.length==8 ){
   for (let i = 0 ; i< numberRef.current.children.length; i ++){
     if(numberRef.current.children[i].style.transform!="translate(0px, 0px)"){
       numberRef.current.children[i].style.transform=""
@@ -232,6 +232,7 @@ if(ref.current.children[0].offsetTop-e.y<=15){
       }
 
     }
+    console.log(Index)
     // Index is the Index of the input 
     // Need To get The Index Of element Selected from the number ; 
     //e.target.dataset["key"] index if The P 
