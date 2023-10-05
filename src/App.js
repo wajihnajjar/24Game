@@ -86,7 +86,6 @@ return true
         for (let i = 0 ; i< data.length; i ++){
           if(checkForEquation(data[i]["content"])){
             t.push(data[i])
-            console.log(data[i]["content"])
           }
          
         }
