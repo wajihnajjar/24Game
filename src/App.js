@@ -18,7 +18,7 @@ function App() {
   const numberRef = useRef(null)
   const [randomN , setRand] = useState([])
   const [allLevels , setLeveles] = useState([])
-  const [currLevel , setCurrLevel] = useState(15)
+  const [currLevel , setCurrLevel] = useState(95)
   const [test,setTest] = useState(["","","","","","",""])
   const [sum , setSum] = useState(0)
   const [lowestInter , setLowerInter] = useState(8)
@@ -86,8 +86,12 @@ return true
         for (let i = 0 ; i< data.length; i ++){
           if(checkForEquation(data[i]["content"])){
             t.push(data[i])
+            
           }
          
+        }
+        for (let i = 0 ; i< t.length; i++){
+          console.log(t[i]["content"] , " " , i)
         }
         setLeveles(t)
       })
