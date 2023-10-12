@@ -5,7 +5,6 @@ import Draggable from 'react-draggable';
 import { useAlert } from "react-alert";
 import axios from "axios"
 import Background from "./endless-constellation.png"
-import ReactDOM from 'react-dom';
 const createRandomNumber =()=>{
   return Math.floor(Math.random()*1000)
 }
