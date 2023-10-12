@@ -159,6 +159,9 @@ return true
 
   }
   }
+  useEffect(()=>{
+    console.log("Number Array Changed")
+  },[randomN])
   const GetTheSomme = ()=>{
     // in Case OF All inputs are full make this function work and change The state
     let Arr = ref.current.children 
@@ -253,9 +256,9 @@ if(ref.current.children[0].offsetTop-e.y<=15){
 // Deleting Happen To Wrong Element
 // Here We Change Rand Because We Already Take The element 
 // 
+  let a  = [...randomN]
+  setRand(a)
     setTest(t)
-    let a  = [...randomN]
-    setRand(a)
 
     GetTheSomme()
   }
