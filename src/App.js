@@ -46,7 +46,6 @@ if(numberRef!=undefined  && randomN.length==8 ){
       numberRef.current.children[i].style.transform="translate(0px, 0px)"
     }
     let arr =["Number" , "react-draggable"]
-   // numberRef.current.children[i].classList = arr 
   }
 }
 if(randomN.length<7){
