@@ -44,7 +44,7 @@ useEffect(()=>{
 if(numberRef!=undefined  && randomN.length==8 ){
   for (let i = 0 ; i< numberRef.current.children.length; i ++){
     if(numberRef.current.children[i].style.transform!="translate(0px, 0px)"){
-      numberRef.current.children[i].style.transform=""
+      numberRef.current.children[i].style.transform="translate(0px, 0px)"
     }
      numberRef.current.children[i].x  =  numberRef.current.children[i].offsetHeight
      numberRef.current.children[i].y = numberRef.current.children[i].offsetLeft 
