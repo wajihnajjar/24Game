@@ -229,7 +229,7 @@ if(ref.current.children[0].offsetTop-e.y<=15){
       }
 
     }
-    console.log(Index)
+
     // Index is the Index of the input 
     // Need To get The Index Of element Selected from the number ; 
     //e.target.dataset["key"] index if The P 
