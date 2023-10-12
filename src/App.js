@@ -254,6 +254,8 @@ if(ref.current.children[0].offsetTop-e.y<=15){
 // Here We Change Rand Because We Already Take The element 
 // 
     setTest(t)
+    let a  = [...randomN]
+    setRand(a)
 
     GetTheSomme()
   }
