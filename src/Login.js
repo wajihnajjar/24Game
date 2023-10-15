@@ -8,13 +8,14 @@ return (
         width:"10wh", 
         backgroundColor:"red",
         display:"grid", 
-        gridTemplateColumns: "5%% 90% 5%" ,
-        gridTemplateRows:"5% 80% 5%",
-        gridTemplateAreas: "header header header header test header header header header"
+        gridTemplateColumns: "10% 70% 20%" ,
+        gridTemplateRows:"10% 80% 10%",
+        gridTemplateAreas: "header header e a test c header header header"
 }}>
 
 <p style={{
-    gridArea:"test"
+gridColumn:"2 / span 1",
+gridRow : "2 / span 1"
 }}>
     Hello World
 </p>
