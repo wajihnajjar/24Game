@@ -256,7 +256,6 @@ if(ref.current.children[0].offsetTop-e.y<=15){
     GetTheSomme()
   }
 
-  console.log(Index , " Index")
   if(Index==-1){
     for (let i = 0 ; i< numberRef.current.children.length; i ++){
         numberRef.current.children[i].style.transform="translate(0px, 0px)"
