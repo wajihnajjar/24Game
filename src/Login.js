@@ -9,10 +9,15 @@ return (
         backgroundColor:"red",
         display:"grid", 
         gridTemplateColumns: "5%% 90% 5%" ,
-        gridTemplateRows:"5% 80% 5%"
-        
-    }}>
-        test
+        gridTemplateRows:"5% 80% 5%",
+        gridTemplateAreas: "header header header header test header header header header"
+}}>
+
+<p style={{
+    gridArea:"test"
+}}>
+    Hello World
+</p>
     </div>
 )
 
