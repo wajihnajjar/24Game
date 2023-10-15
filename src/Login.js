@@ -14,8 +14,11 @@ return (
 }}>
 
 <p style={{
+    display:"grid" , 
 gridColumn:"2 / span 1",
-gridRow : "2 / span 1"
+gridRow : "2 / span 1", 
+alignItems:"center" , 
+justifyItems:"center"
 }}>
     Hello World
 </p>
