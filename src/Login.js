@@ -8,8 +8,9 @@ return (
         width:"10wh", 
         backgroundColor:"red",
         display:"grid", 
-        gridTemplateColumns: "25% 50% 25%" ,
-
+        gridTemplateColumns: "5%% 90% 5%" ,
+        gridTemplateRows:"5% 80% 5%"
+        
     }}>
         test
     </div>
