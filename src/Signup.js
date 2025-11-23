@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Background from "./endless-constellation.png"; // Assuming same background as App.js
+import Background from "./endless-constellation.png";
 
-export default function Login() {
+export default function Signup() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleSignup = (e) => {
     e.preventDefault();
-    // TODO: Add actual login logic (e.g., API call)
-    console.log("Logging in with", username, password);
-    navigate("/game"); // Redirect to game after login
+    // TODO: Add actual signup logic (e.g., API call)
+    console.log("Signing up with", username, email, password);
+    navigate("/login"); // Redirect to login after signup
   };
 
   return (
@@ -25,7 +26,7 @@ export default function Login() {
       alignItems: "center",
       overflow: "hidden"
     }}>
-      <form onSubmit={handleLogin} style={{
+      <form onSubmit={handleSignup} style={{
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -35,12 +36,27 @@ export default function Login() {
         boxShadow: "0 4px 8px rgba(0, 0, 0, 0.3)",
         width: "300px"
       }}>
-        <h2 style={{ color: "white", fontWeight: "bold", marginBottom: "1rem" }}>Login</h2>
+        <h2 style={{ color: "white", fontWeight: "bold", marginBottom: "1rem" }}>Sign Up</h2>
         <input
           type="text"
           placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          style={{
+            marginBottom: "1rem",
+            padding: "0.5rem",
+            width: "100%",
+            border: "2px solid white",
+            borderRadius: "5px",
+            backgroundColor: "transparent",
+            color: "white"
+          }}
+        />
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           style={{
             marginBottom: "1rem",
             padding: "0.5rem",
@@ -73,9 +89,9 @@ export default function Login() {
           borderRadius: "5px",
           cursor: "pointer",
           fontWeight: "bold"
-        }}>Login</button>
+        }}>Sign Up</button>
         <p style={{ color: "white", marginTop: "1rem" }}>
-          Don't have an account? <a href="/signup" style={{ color: "lightblue" }}>Sign up</a>
+          Already have an account? <a href="/login" style={{ color: "lightblue" }}>Login</a>
         </p>
       </form>
     </div>
