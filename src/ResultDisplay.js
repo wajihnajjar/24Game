@@ -2,9 +2,9 @@ import React from 'react';
 
 function ResultDisplay({ result }) {
   return (
-    <p style={{ fontWeight: "bold", fontSize: "1.5rem", color: "white" }}>
+    <div className="result-display">
       {result} = 24
-    </p>
+    </div>
   );
 }
 

@@ -1,99 +1,77 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Background from "./endless-constellation.png";
+import "./Login.css";
 
 export default function Signup() {
   const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleSignup = (e) => {
     e.preventDefault();
-    // TODO: Add actual signup logic (e.g., API call)
-    console.log("Signing up with", username, email, password);
-    navigate("/login"); // Redirect to login after signup
+    setIsLoading(true);
+    // Simulate API call
+    setTimeout(() => {
+      console.log("Signing up with", username, email, password);
+      setIsLoading(false);
+      navigate("/login"); // Redirect to login after signup
+    }, 1000);
   };
 
   return (
-    <div style={{
-      height: "100vh",
-      width: "100vw",
-      backgroundImage: `url(${Background})`,
-      backgroundSize: "cover",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      overflow: "hidden"
-    }}>
-      <form onSubmit={handleSignup} style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        backgroundColor: "rgba(0, 0, 0, 0.5)",
-        padding: "2rem",
-        borderRadius: "10px",
-        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.3)",
-        width: "300px"
-      }}>
-        <h2 style={{ color: "white", fontWeight: "bold", marginBottom: "1rem" }}>Sign Up</h2>
-        <input
-          type="text"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          style={{
-            marginBottom: "1rem",
-            padding: "0.5rem",
-            width: "100%",
-            border: "2px solid white",
-            borderRadius: "5px",
-            backgroundColor: "transparent",
-            color: "white"
-          }}
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          style={{
-            marginBottom: "1rem",
-            padding: "0.5rem",
-            width: "100%",
-            border: "2px solid white",
-            borderRadius: "5px",
-            backgroundColor: "transparent",
-            color: "white"
-          }}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          style={{
-            marginBottom: "1rem",
-            padding: "0.5rem",
-            width: "100%",
-            border: "2px solid white",
-            borderRadius: "5px",
-            backgroundColor: "transparent",
-            color: "white"
-          }}
-        />
-        <button type="submit" style={{
-          padding: "0.5rem 1rem",
-          backgroundColor: "white",
-          border: "none",
-          borderRadius: "5px",
-          cursor: "pointer",
-          fontWeight: "bold"
-        }}>Sign Up</button>
-        <p style={{ color: "white", marginTop: "1rem" }}>
-          Already have an account? <a href="/login" style={{ color: "lightblue" }}>Login</a>
+    <div className="login-wrapper" style={{ backgroundImage: `url(${Background})` }}>
+      <div className="login-card">
+        <h2 className="login-title">Create Account</h2>
+        <form onSubmit={handleSignup} style={{ width: "100%" }}>
+          <div className="input-group">
+            <input
+              type="text"
+              className="login-input"
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+            />
+          </div>
+          <div className="input-group">
+            <input
+              type="email"
+              className="login-input"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+          <div className="input-group">
+            <input
+              type={showPassword ? "text" : "password"}
+              className="login-input"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            <button
+              type="button"
+              className="password-toggle"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? "Hide" : "Show"}
+            </button>
+          </div>
+          <button type="submit" className="login-btn" disabled={isLoading}>
+            {isLoading ? "Signing up..." : "Sign Up"}
+          </button>
+        </form>
+        <p className="signup-link">
+          Already have an account? <a href="/login">Login</a>
         </p>
-      </form>
+      </div>
     </div>
   );
 }

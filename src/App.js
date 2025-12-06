@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './App.css';
 import Draggable from 'react-draggable';
 import { useAlert } from "react-alert";
@@ -12,6 +13,7 @@ import ResetButton from './ResetButton';
 
 function App() {
   const alert = useAlert();
+  const navigate = useNavigate();
   const ref = useRef(null);
   const numberRef = useRef(null);
   const [items, setItems] = useState([]);
@@ -19,6 +21,8 @@ function App() {
   const [currentLevel, setCurrentLevel] = useState(0);
   const [expression, setExpression] = useState(["", "", "", "", "", "", ""]);
   const [result, setResult] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const resetExpression = () => {
     setExpression(["", "", "", "", "", "", ""]);
@@ -50,26 +54,34 @@ function App() {
     loadLevel();
   }, [levels, currentLevel]);
 
-  const checkForEquation = (str) => {
-    for (let i = 3; i < str.length; i += 2) {
-      if ((str[i] === '*' || str[i] === '/') && (str[i - 2] === '+' || str[i - 2] === '-')) {
-        return false;
-      }
-    }
-    return true;
-  };
-
   useEffect(() => {
-    axios.get("http://localhost:4001/create/getAllLevelsV1").then(res => {
-      let data = res.data;
-      let t = [];
-      for (let i = 0; i < data.length; i++) {
-        if (checkForEquation(data[i]["content"])) {
-          t.push(data[i]);
+    const checkForEquation = (str) => {
+      for (let i = 3; i < str.length; i += 2) {
+        if ((str[i] === '*' || str[i] === '/') && (str[i - 2] === '+' || str[i - 2] === '-')) {
+          return false;
         }
       }
-      setLevels(t);
-    });
+      return true;
+    };
+
+    setLoading(true);
+    axios.get("http://localhost:4001/create/getAllLevelsV1")
+      .then(res => {
+        let data = res.data;
+        let t = [];
+        for (let i = 0; i < data.length; i++) {
+          if (checkForEquation(data[i]["content"])) {
+            t.push(data[i]);
+          }
+        }
+        setLevels(t);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error("Error fetching levels:", err);
+        setError("Failed to load game levels. Please try again.");
+        setLoading(false);
+      });
   }, []);
 
   const doTheSum = (stack) => {
@@ -197,26 +209,38 @@ function App() {
     loadLevel();
   };
 
+  const handleLogout = () => {
+    navigate('/login');
+  };
+
+  if (loading) {
+    return (
+      <div className="game-container" style={{ backgroundImage: `url(${Background})` }}>
+        <div className="game-card">
+          <div className="loading-container">
+            <div className="spinner"></div>
+            <p>Loading Levels...</p>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="game-container" style={{ backgroundImage: `url(${Background})` }}>
+        <div className="game-card">
+          <div className="error-message">{error}</div>
+          <button className="reset-btn" onClick={() => window.location.reload()}>Retry</button>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div style={{
-      height: "100vh",
-      display: "flex",
-      width: "100vw",
-      backgroundImage: `url(${Background})`,
-      backgroundSize: "cover",
-      overflow: "hidden",
-      justifyContent: "center",
-      alignItems: "center"
-    }}>
-      <div style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        backgroundColor: "rgba(0, 0, 0, 0.5)",
-        padding: "2rem",
-        borderRadius: "10px",
-        boxShadow: "0 4px 8px rgba(0, 0, 0, 0.3)"
-      }}>
+    <div className="game-container" style={{ backgroundImage: `url(${Background})` }}>
+      <button className="logout-btn" onClick={handleLogout} aria-label="Logout">Logout</button>
+      <div className="game-card">
         <LevelDisplay currentLevel={currentLevel} totalLevels={levels.length} />
         <DraggableItems items={items} onStop={onStop} numberRef={numberRef} />
         <ExpressionSlots expression={expression} handleRemove={handleRemove} refProp={ref} />
